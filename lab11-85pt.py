@@ -1,10 +1,11 @@
 ##########################################
 #                                        #
-#           85pt - Lab 11                # 
+#           70pt - Lab 11                # 
 #                                        #
 ##########################################
 
-# Make the ball bounce up and down instead of left and right
+# Make the ball twice as large
+# Make the ball move 5 times faster
 
 from Tkinter import *
 root = Tk()
@@ -13,19 +14,19 @@ drawpad = Canvas(root, width=800,height=600, background='white')
 drawpad.grid(row=0, column=0)
 
 # Create the oval
-circle = drawpad.create_oval(10, 10, 50, 50, fill='green')
+circle = drawpad.create_oval(10, 10, 90, 90, fill='green')
 direction = 1
 # Create our animation function
 def animate():
     global direction
     # Get the x and y co-ordinates of the circle
     x1, y1, x2, y2 = drawpad.coords(circle)
-    if x2 > drawpad.winfo_width(): 
-        direction = - 1
-    elif x1 < 0:
-        direction = 1
+    if y2 > drawpad.winfo_width(): 
+        direction = - 80
+    elif y1 < 0:
+        direction = 80
     #Move our oval object by the value of direction
-    drawpad.move(circle,direction,0)
+    drawpad.move(circle,0,direction)
     # Wait for 1 millisecond, then recursively call our animate function
     drawpad.after(1, animate)
 
